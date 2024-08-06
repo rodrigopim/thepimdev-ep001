@@ -10,7 +10,7 @@ import jakarta.ws.rs.core.MediaType;
 public class PessoaResource {
 
     @Inject
-    private GreetingService service;
+    private PessoaService service;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

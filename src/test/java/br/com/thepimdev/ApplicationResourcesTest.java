@@ -15,7 +15,7 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
 @QuarkusTest
-class GreetingResourceTest {
+class ApplicationResourcesTest {
 
     @Test
     void testHelloEndpoint() {
@@ -23,16 +23,12 @@ class GreetingResourceTest {
     }
 
     @Test
-    void testHelloEndpointAjustado() {
+    void testPessoaEndpoint() {
         Response response = given().contentType(ContentType.JSON).when().get("/pessoa").then().statusCode(200).extract().response();
-
-        // ObjectMapper mapper = new ObjectMapper();
-        // mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, true);
-        // mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
 
         ObjectMapper mapper = JsonMapper.builder()
             .addModule(new JavaTimeModule())
-            .configure(SerializationFeature.WRAP_ROOT_VALUE, true)
+            // .configure(SerializationFeature.WRAP_ROOT_VALUE, true)
             .configure(SerializationFeature.INDENT_OUTPUT, true)
             .build();
 
@@ -43,6 +39,6 @@ class GreetingResourceTest {
             e.printStackTrace();
         }
 
-        assertEquals(GreetingService.pessoa, pessoaTest);
+        assertEquals(PessoaService.pessoa, pessoaTest);
     }
 }

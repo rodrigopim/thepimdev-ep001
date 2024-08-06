@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 @ApplicationScoped
-public class GreetingService {
+public class PessoaService {
 
     public static final Pessoa pessoa = new Pessoa(
         "ThePimDev",

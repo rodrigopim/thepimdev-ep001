@@ -5,7 +5,6 @@ import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import io.quarkus.arc.All;
 import io.quarkus.jackson.ObjectMapperCustomizer;
@@ -18,7 +17,6 @@ public class ObjectMapperConfiguration {
     @Produces
     ObjectMapper objectMapper(@All List<ObjectMapperCustomizer> cutomizers) {
         ObjectMapper mapper = JsonMapper.builder()
-            .addModule(new JavaTimeModule())
             // .configure(SerializationFeature.WRAP_ROOT_VALUE, true)
             .configure(SerializationFeature.INDENT_OUTPUT, true)
             .build();
